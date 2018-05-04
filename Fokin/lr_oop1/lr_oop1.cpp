@@ -42,8 +42,8 @@ public:
   {
     if (this != &other)
     {
-      swap(m_size, other.m_size);
-      swap(m_array, other.m_array);
+        copy(other.m_array.get(), other.m_array.get() + other.m_size, m_array.get());
+        m_size = other.m_size;
     }
 
     return *this;
@@ -56,7 +56,6 @@ public:
   {
     *this = move(other);
     other.m_size = 0;
-    //other.m_array = nullptr;
     other.m_array.release();
   }
 
